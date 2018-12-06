@@ -1,14 +1,18 @@
 var start = document.querySelector(".start");
 var pause = document.querySelector(".pause");
+var reset = document.querySelector(".reset");
 start.addEventListener("click", countDown);
 pause.addEventListener("click", countDownReturn);
+reset.addEventListener("click", countDownReset);
+
+var timer = document.getElementById("timer");
+var time = timer.innerHTML;
+var arg = time.split(":");
+var minute = arg[0];
+var second = arg[1];
+var timerID = null;
 
 function countDown() {
-  var timer = document.getElementById("timer");
-  var time = timer.innerHTML;
-  var arg = time.split(":");
-  var minute = arg[0];
-  var second = arg[1];
   if (second == 0) {
     if (minute == 0) {
       alert("Время для перерыва!");
@@ -19,11 +23,21 @@ function countDown() {
   } else {
     second--;
   }
+  timer = minute + ":" + second;
   document.getElementById("timer").innerHTML = minute + ":" + second;
-  document.title = document.getElementById("timer").innerHTML = minute + ":" + second;
-  setTimeout(countDown, 1000);
+  document.title = minute + ":" + second;
+  timerID = setTimeout(countDown, 1000);
 }
 
 function countDownReturn() {
-  return;
+  clearTimeout(timerID);
+}
+
+
+function countDownReset() {
+  clearTimeout(timerID);
+  timer = 0;
+  minute = "25";
+  second = "00";
+  document.getElementById("timer").innerHTML = minute + ":" + second;
 }
