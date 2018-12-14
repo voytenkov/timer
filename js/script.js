@@ -11,14 +11,17 @@ pomodoro.addEventListener("click", setPomodoro);
 short.addEventListener("click", setShort);
 long.addEventListener("click", setLong);
 
-var timer = document.getElementById("timer");
-var time = timer.innerHTML;
-var arg = time.split(":");
-var minute = arg[0];
-var second = arg[1];
-var timerID = null;
+var timer = document.getElementById("timer").innerHTML;
+
+function setTimer(timer) {
+  arg = timer.split(":");
+  minute = arg[0];
+  second = arg[1];
+  timerID = null;
+}
 
 function countDown() {
+  setTimer(timer);
   if (second == 0) {
     if (minute == 0) {
       alert("Время для перерыва!");
@@ -44,29 +47,20 @@ function countDownReturn() {
 
 function countDownReset() {
   clearTimeout(timerID);
-  /*timer = 0; */
-  minute = "25";
-  second = "00";
-  document.getElementById("timer").innerHTML = minute + ":" + second;
+  setPomodoro();
 }
 
 function setPomodoro() {
   clearTimeout(timerID);
-  minute = "23";
-  second = "00";
-  document.getElementById("timer").innerHTML = minute + ":" + second;
+  timer = document.getElementById("timer").innerHTML = "23:00";
 }
 
 function setShort() {
   clearTimeout(timerID);
-  minute = "05";
-  second = "00";
-  document.getElementById("timer").innerHTML = minute + ":" + second;
+  timer = document.getElementById("timer").innerHTML = "05:00";
 }
 
 function setLong() {
   clearTimeout(timerID);
-  minute = "15";
-  second = "00";
-  document.getElementById("timer").innerHTML = minute + ":" + second;
+  timer = document.getElementById("timer").innerHTML = "15:00";
 }
