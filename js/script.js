@@ -22,6 +22,7 @@ function setTimer(timer) {
 
 function countDown() {
   setTimer(timer);
+  start.disabled = true;
   if (second == 0) {
     if (minute == 0) {
       alert("Время для перерыва!");
@@ -42,12 +43,14 @@ function countDown() {
 
 function countDownReturn() {
   clearTimeout(timerID);
+  start.disabled = false;
 }
 
 
 function countDownReset() {
   clearTimeout(timerID);
   setPomodoro();
+  start.disabled = false;
 }
 
 function setPomodoro() {
