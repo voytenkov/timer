@@ -1,0 +1,22 @@
+.main-header {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header__caption {
+  margin: 20px 0;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  text-align: center;
+}
+.setting-button {
+  margin: 5px;
+}
