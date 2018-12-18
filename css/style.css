@@ -1,22 +1,37 @@
 .main-header {
   display: flex;
   flex-direction: column;
-  align-content: space-between;
   align-items: center;
   margin: 0;
   padding: 0;
 }
 
 .main-header__caption {
-  margin: 20px 0;
+  width: 320px;
+  margin: 20px;
+  font-size: 24px;
+}
+
+.main-header__buttons {
+  width: 320px;
+  margin: 0;
+  padding: 0;
 }
 
 .settings {
   display: flex;
   flex-direction: column;
-  align-content: space-between;
-  text-align: center;
+  align-content: space-around;
+  background-color: #4d4d4d;
 }
+
 .setting-button {
-  margin: 5px;
+  margin: 0;
+  padding: 11px 21px;
+  border: 1px solid #333333;
+}
+
+.setting-button a {
+  text-decoration: none;
+  color: #ffffff;
 }
