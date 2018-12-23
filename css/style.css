@@ -4,7 +4,20 @@
   margin: 0 auto;
 }
 
-.main-wrapper,
+.header__background {
+  background-color: #f2f2f2;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 30px 0;
+}
+
+/* .main-wrapper,
 .settings-wrapper,
 .controls-wrapper,
 .time-wrapper {
@@ -13,17 +26,25 @@
   flex-wrap: wrap;
   align-items: center;
   margin: 0;
-  padding: 0;
-}
+  padding: 30px 0;
+} */
 
-.main-wrapper {
-  background-color: #f2f2f2;
+.settings-wrapper,
+.controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 30px 0;
 }
 
 .main-header__caption {
   width: 100%;
   max-width: 50%;
+  align-self: flex-start;
   margin: 10px;
+  margin-left: 50px;
   font-size: 24px;
   line-height: 24px;
 }
@@ -31,7 +52,6 @@
 .nav-bar {
   display: flex;
   flex-direction: column;
-  align-content: space-around;
   width: 100%;
   max-width: 80%;
   margin: 0;
@@ -46,7 +66,7 @@
   border-bottom: none;
 }
 
-.buttons-item a,
+.button a,
 .nav-bar a {
   text-decoration: none;
   color: #ffffff;
@@ -55,7 +75,6 @@
 .buttons-list {
   display: flex;
   flex-direction: column;
-  align-items: center
   width: 100%;
   max-width: 80%;
   margin: 0;
@@ -63,7 +82,7 @@
   padding: 0;
 }
 
-.buttons-item {
+.button {
   width: 100%;
   margin: 0;
   padding: 11px 21px;
@@ -71,6 +90,7 @@
   border: 1px solid #1E728C;
   border-bottom: none;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .buttons-list .active {
@@ -78,17 +98,57 @@
 }
 
 @media (min-width: 575px) {
-  .main-wrapper,
-  .settings-wrapper,
-  .buttons-list,
-  .nav-bar {
+
+  .main-header__caption {
+    margin-left: 70px;
+    margin-right: 0;
+  }
+
+  .settings-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: auto;
+  }
+
+  .buttons-list {
     flex-direction: row;
     justify-content: center;
     align-content: center;
     width: 100%;
   }
-  
-  .buttons-list li {
+
+  .buttons-item {
     width: 100%;
   }
+  
+}
+
+@media (min-width: 767px) {
+
+  .main-wrapper,
+  .nav-bar {
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: auto;
+  }
+
+  .controls-wrapper .buttons-item {
+    width: 150px;
+    margin-right: 50px;
+  }
+  .controls-wrapper .buttons-item:last-child {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .settings-wrapper,
+  .controls-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  
 }
