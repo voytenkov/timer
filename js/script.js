@@ -4,6 +4,8 @@ var reset = document.querySelector("#reset");
 var pomodoro = document.querySelector("#pomodoro");
 var short = document.querySelector("#short-break");
 var long = document.querySelector("#long-break");
+var timerID = null;
+var URL = "http://mnogosdelal.ru/donothingfor2minutes/";
 start.addEventListener("click", countDown);
 pause.addEventListener("click", countDownReturn);
 reset.addEventListener("click", countDownReset);
@@ -25,7 +27,7 @@ function countDown() {
   start.disabled = true;
   if (second == 0) {
     if (minute == 0) {
-      location.replace("http://mnogosdelal.ru/donothingfor2minutes/");
+      window.open(URL , "_blank");
       return;
     };
     minute--;
@@ -55,12 +57,13 @@ function countDownReset() {
 
 function setPomodoro() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "23:00";
+  timer = document.getElementById("timer").innerHTML = "00:10";
 }
 
 function setShort() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "05:00";
+  timer = document.getElementById("timer").innerHTML = "00:15";
+  URL = "https://maxdone.micromiles.co/personal#tasks/";
 }
 
 function setLong() {
