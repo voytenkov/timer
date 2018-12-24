@@ -25,7 +25,7 @@ function countDown() {
   start.disabled = true;
   if (second == 0) {
     if (minute == 0) {
-      alert("Время для перерыва!");
+      location.replace("http://mnogosdelal.ru/donothingfor2minutes/");
       return;
     };
     minute--;
