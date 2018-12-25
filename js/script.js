@@ -4,6 +4,8 @@ var reset = document.querySelector("#reset");
 var pomodoro = document.querySelector("#pomodoro");
 var short = document.querySelector("#short-break");
 var long = document.querySelector("#long-break");
+var saveParameters = document.querySelector("#save");
+
 var timerID = null;
 var URL = "http://mnogosdelal.ru/donothingfor2minutes/";
 start.addEventListener("click", countDown);
@@ -12,8 +14,10 @@ reset.addEventListener("click", countDownReset);
 pomodoro.addEventListener("click", setPomodoro);
 short.addEventListener("click", setShort);
 long.addEventListener("click", setLong);
+saveParameters.addEventListener("click", setParameters);
 
-var timer = document.getElementById("timer").innerHTML;
+var timer = localStorage.getItem("pomodoro");
+document.getElementById("timer").innerHTML = timer;
 
 function setTimer(timer) {
   arg = timer.split(":");
@@ -57,7 +61,7 @@ function countDownReset() {
 
 function setPomodoro() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "00:10";
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("pomodoro");
 }
 
 function setShort() {
@@ -69,4 +73,13 @@ function setShort() {
 function setLong() {
   clearTimeout(timerID);
   timer = document.getElementById("timer").innerHTML = "15:00";
+}
+
+function setParameters() {
+  var pomodorotime = document.querySelector("#pomodoro-time").value + ":00";
+  localStorage.setItem("pomodoro", pomodorotime);
+  localStorage.setItem("shortbreak", "10:00");
+  localStorage.setItem("longbreak", "15:00");
+  timer = localStorage.getItem("pomodoro");
+  document.getElementById("timer").innerHTML = timer;
 }

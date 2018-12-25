@@ -110,6 +110,11 @@
   color: #1d1d1d;
 }
 
+.modal-settings .button {
+  margin-top: 20px;
+  width: 25%;
+}
+
 @media (min-width: 575px) {
 
   .main-header__caption {
