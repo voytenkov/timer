@@ -19,6 +19,8 @@ saveParameters.addEventListener("click", setParameters);
 var timer = localStorage.getItem("pomodoro");
 document.getElementById("timer").innerHTML = timer;
 
+window.onload = setParameters;
+
 function setTimer(timer) {
   arg = timer.split(":");
   minute = arg[0];
@@ -77,7 +79,7 @@ function setLong() {
 
 function setParameters() {
   var pomodorotime = document.querySelector("#pomodoro-time").value + ":00";
-  localStorage.setItem("pomodoro", pomodorotime);
+  localStorage.setItem("pomodoro", "25:00");
   localStorage.setItem("shortbreak", "10:00");
   localStorage.setItem("longbreak", "15:00");
   timer = localStorage.getItem("pomodoro");
