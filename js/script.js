@@ -3,6 +3,9 @@ var pause = document.querySelector("#stop");
 var reset = document.querySelector("#reset");
 var pomodoro = document.querySelector("#pomodoro");
 var short = document.querySelector("#short-break");
+var pomodoroTime = document.querySelector("#pomodoro-time");
+var shortTime = document.querySelector("#short-time");
+var longTime = document.querySelector("#long-time");
 var long = document.querySelector("#long-break");
 var saveParameters = document.querySelector("#save");
 
@@ -19,9 +22,10 @@ saveParameters.addEventListener("click", setParameters);
 var timer = localStorage.getItem("pomodoro");
 document.getElementById("timer").innerHTML = timer;
 
-window.onload = setParameters;
+window.onload = setDefaultParameters;
 
 function setTimer(timer) {
+//  timer = localStorage.getItem("pomodoro");
   arg = timer.split(":");
   minute = arg[0];
   second = arg[1];
@@ -68,20 +72,26 @@ function setPomodoro() {
 
 function setShort() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "00:15";
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("shortbreak");
   URL = "https://maxdone.micromiles.co/personal#tasks/";
 }
 
 function setLong() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "15:00";
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("longbreak");
 }
 
-function setParameters() {
+function setDefaultParameters() {
   var pomodorotime = document.querySelector("#pomodoro-time").value + ":00";
   localStorage.setItem("pomodoro", "25:00");
   localStorage.setItem("shortbreak", "10:00");
   localStorage.setItem("longbreak", "15:00");
   timer = localStorage.getItem("pomodoro");
   document.getElementById("timer").innerHTML = timer;
+}
+
+function setParameters() {
+  localStorage.setItem("shortbreak", shortTime.value);
+  localStorage.setItem("longbreak", longTime.value);
+  localStorage.setItem("pomodoro", pomodoroTime.value+ ":00");
 }
