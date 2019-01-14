@@ -19,13 +19,11 @@ short.addEventListener("click", setShort);
 long.addEventListener("click", setLong);
 saveParameters.addEventListener("click", setParameters);
 
-var timer = localStorage.getItem("pomodoro");
-document.getElementById("timer").innerHTML = timer;
+
 
 window.onload = setDefaultParameters;
 
 function setTimer(timer) {
-//  timer = localStorage.getItem("pomodoro");
   arg = timer.split(":");
   minute = arg[0];
   second = arg[1];
@@ -37,7 +35,7 @@ function countDown() {
   start.disabled = true;
   if (second == 0) {
     if (minute == 0) {
-      window.open(URL , "_blank");
+      window.open(URL, "_blank");
       return;
     };
     minute--;
@@ -67,31 +65,50 @@ function countDownReset() {
 
 function setPomodoro() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = localStorage.getItem("pomodoro");
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("pomodoro") + ":00";
 }
 
 function setShort() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = localStorage.getItem("shortbreak");
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("shortbreak") + ":00";
   URL = "https://maxdone.micromiles.co/personal#tasks/";
 }
 
 function setLong() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = localStorage.getItem("longbreak");
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("longbreak") + ":00";
 }
 
 function setDefaultParameters() {
-  var pomodorotime = document.querySelector("#pomodoro-time").value + ":00";
-  localStorage.setItem("pomodoro", "25:00");
-  localStorage.setItem("shortbreak", "10:00");
-  localStorage.setItem("longbreak", "15:00");
-  timer = localStorage.getItem("pomodoro");
+  
+  localStorage.setItem("pomodoro", "25");
+  localStorage.setItem("shortbreak", "10");
+  localStorage.setItem("longbreak", "15");
+  timer = localStorage.getItem("pomodoro") + ":00";
   document.getElementById("timer").innerHTML = timer;
+  
+  document.getElementById("pomodoro-time").value = localStorage.getItem("pomodoro"); 
+  document.getElementById("short-time").value = localStorage.getItem("shortbreak");
+  document.getElementById("long-time").value = localStorage.getItem("longbreak");
 }
 
 function setParameters() {
-  localStorage.setItem("shortbreak", shortTime.value);
-  localStorage.setItem("longbreak", longTime.value);
-  localStorage.setItem("pomodoro", pomodoroTime.value+ ":00");
+  if (shortTime.value < 10) {
+    localStorage.setItem("shortbreak", "0" + shortTime.value);
+  } else {
+    localStorage.setItem("shortbreak", shortTime.value);
+  }
+  if (longTime.value < 10) {
+    localStorage.setItem("longbreak", "0" + longTime.value);  
+  } else {
+    localStorage.setItem("longbreak", longTime.value);
+  }
+  if (pomodoroTime.value < 10) {
+    localStorage.setItem("pomodoro", "0" + pomodoroTime.value);  
+  } else {
+    localStorage.setItem("pomodoro", pomodoroTime.value);
+  }
+  
+  timer = localStorage.getItem("pomodoro") + ":00";
+  document.getElementById("timer").innerHTML = timer;
 }
