@@ -1,12 +1,15 @@
 var start = document.querySelector("#start");
 var pause = document.querySelector("#stop");
 var reset = document.querySelector("#reset");
+
 var pomodoro = document.querySelector("#pomodoro");
 var short = document.querySelector("#short-break");
+var long = document.querySelector("#long-break");
+
 var pomodoroTime = document.querySelector("#pomodoro-time");
 var shortTime = document.querySelector("#short-time");
 var longTime = document.querySelector("#long-time");
-var long = document.querySelector("#long-break");
+
 var saveParameters = document.querySelector("#save");
 
 var timerID = null;
@@ -65,7 +68,7 @@ function countDownReset() {
 
 function setPomodoro() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = localStorage.getItem("pomodoro") + ":00";
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("pomodorobreak") + ":00";
 }
 
 function setShort() {
@@ -81,15 +84,21 @@ function setLong() {
 
 function setDefaultParameters() {
   
-  localStorage.setItem("pomodoro", "25");
+  localStorage.setItem("pomodorobreak", "25");
   localStorage.setItem("shortbreak", "10");
   localStorage.setItem("longbreak", "15");
-  timer = localStorage.getItem("pomodoro") + ":00";
+  
+  
+  timer = localStorage.getItem("pomodorobreak") + ":00";
   document.getElementById("timer").innerHTML = timer;
   
-  document.getElementById("pomodoro-time").value = localStorage.getItem("pomodoro"); 
+  document.getElementById("pomodoro-time").value = localStorage.getItem("pomodorobreak"); 
   document.getElementById("short-time").value = localStorage.getItem("shortbreak");
   document.getElementById("long-time").value = localStorage.getItem("longbreak");
+  
+  document.getElementById("pomodoro").value = localStorage.getItem("pomodorobreak"); 
+  document.getElementById("short-break").value = localStorage.getItem("shortbreak");
+  document.getElementById("long-break").value = localStorage.getItem("longbreak");
 }
 
 function setParameters() {
@@ -104,11 +113,11 @@ function setParameters() {
     localStorage.setItem("longbreak", longTime.value);
   }
   if (pomodoroTime.value < 10) {
-    localStorage.setItem("pomodoro", "0" + pomodoroTime.value);  
+    localStorage.setItem("pomodorobreak", "0" + pomodoroTime.value);  
   } else {
-    localStorage.setItem("pomodoro", pomodoroTime.value);
+    localStorage.setItem("pomodorobreak", pomodoroTime.value);
   }
   
-  timer = localStorage.getItem("pomodoro") + ":00";
+  timer = localStorage.getItem("pomodorobreak") + ":00";
   document.getElementById("timer").innerHTML = timer;
 }
