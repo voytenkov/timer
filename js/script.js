@@ -1,6 +1,9 @@
 var start = document.querySelector("#start");
 var pause = document.querySelector("#stop");
 var reset = document.querySelector("#reset");
+var settings = document.querySelector("#settings");
+var modalSettings = document.querySelector(".modal-settings");
+
 
 var pomodoro = document.querySelector("#pomodoro");
 var short = document.querySelector("#short-break");
@@ -17,9 +20,12 @@ var URL = "http://mnogosdelal.ru/donothingfor2minutes/";
 start.addEventListener("click", countDown);
 pause.addEventListener("click", countDownReturn);
 reset.addEventListener("click", countDownReset);
+
 pomodoro.addEventListener("click", setPomodoro);
 short.addEventListener("click", setShort);
 long.addEventListener("click", setLong);
+
+settings.addEventListener("click", modalView);
 saveParameters.addEventListener("click", setParameters);
 
 
@@ -69,12 +75,15 @@ function countDownReset() {
 function setPomodoro() {
   clearTimeout(timerID);
   timer = document.getElementById("timer").innerHTML = localStorage.getItem("pomodorobreak") + ":00";
+  URL = "http://mnogosdelal.ru/donothingfor2minutes/";
+  start.disabled = false;
 }
 
 function setShort() {
   clearTimeout(timerID);
   timer = document.getElementById("timer").innerHTML = localStorage.getItem("shortbreak") + ":00";
   URL = "https://maxdone.micromiles.co/personal#tasks/";
+  start.disabled = false;
 }
 
 function setLong() {
@@ -120,4 +129,11 @@ function setParameters() {
   
   timer = localStorage.getItem("pomodorobreak") + ":00";
   document.getElementById("timer").innerHTML = timer;
+  
+  modalView();
+}
+
+
+function modalView() {
+  modalSettings.classList.toggle("modal-settings__view");
 }

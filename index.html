@@ -18,7 +18,7 @@
           </div>
           <ul class="nav-bar">
             <li class="nav-bar__item"><a href="">FAQ</a></li>
-            <li class="nav-bar__item"><a href="" class="button">Settings</a></li>
+            <li class="nav-bar__item" id="settings"><a href="#">Settings</a></li>
             <li class="nav-bar__item"><a href="">Tweet about us!</a></li>
           </ul>
         </header>
@@ -58,20 +58,24 @@
       </div>
     </div>
 
-<section class="modal-settings">
+<section class="modal-settings modal-settings__view {
+  display: none;
+}">
   <h3 class="modal-settings__caption">Options</h3>
   
-  <div class="modal-settings__value">
-    <label for="pomodoro-time">Pomodoro</label>
-    <input id="pomodoro-time" type="number" step="1" min="1">
-  </div>
-  <div class="modal-settings__value">
-    <label for="short-time">Short break</label>
-    <input id="short-time" type="number" step="1" min="1">
-  </div>
-  <div class="modal-settings__value">
-    <label for="long-time">Long break</label>
-    <input id="long-time" type="number" step="1" min="1">
+  <div class="modal-settings__values">
+    <div class="modal-settings__value">
+      <label for="pomodoro-time">Pomodoro</label>
+      <input id="pomodoro-time" type="number" step="1" min="1">
+    </div>
+    <div class="modal-settings__value">
+      <label for="short-time">Short break</label>
+      <input id="short-time" type="number" step="1" min="1">
+    </div>
+    <div class="modal-settings__value">
+      <label for="long-time">Long break</label>
+      <input id="long-time" type="number" step="1" min="1">
+    </div>
   </div>
   <input type="button" id="save" class="button" value="Save">
 </section>
