@@ -1,17 +1,36 @@
 var start = document.querySelector("#start");
 var pause = document.querySelector("#stop");
 var reset = document.querySelector("#reset");
+var settings = document.querySelector("#settings");
+var modalSettings = document.querySelector(".modal-settings");
+
+
 var pomodoro = document.querySelector("#pomodoro");
 var short = document.querySelector("#short-break");
 var long = document.querySelector("#long-break");
+
+var pomodoroTime = document.querySelector("#pomodoro-time");
+var shortTime = document.querySelector("#short-time");
+var longTime = document.querySelector("#long-time");
+
+var saveParameters = document.querySelector("#save");
+
+var timerID = null;
+var URL = "http://mnogosdelal.ru/donothingfor2minutes/";
 start.addEventListener("click", countDown);
 pause.addEventListener("click", countDownReturn);
 reset.addEventListener("click", countDownReset);
+
 pomodoro.addEventListener("click", setPomodoro);
 short.addEventListener("click", setShort);
 long.addEventListener("click", setLong);
 
-var timer = document.getElementById("timer").innerHTML;
+settings.addEventListener("click", modalView);
+saveParameters.addEventListener("click", setParameters);
+
+
+
+window.onload = setDefaultParameters;
 
 function setTimer(timer) {
   arg = timer.split(":");
@@ -25,7 +44,7 @@ function countDown() {
   start.disabled = true;
   if (second == 0) {
     if (minute == 0) {
-      alert("Время для перерыва!");
+      window.open(URL, "_blank");
       return;
     };
     minute--;
@@ -55,15 +74,66 @@ function countDownReset() {
 
 function setPomodoro() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "23:00";
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("pomodorobreak") + ":00";
+  URL = "http://mnogosdelal.ru/donothingfor2minutes/";
+  start.disabled = false;
 }
 
 function setShort() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "05:00";
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("shortbreak") + ":00";
+  URL = "https://maxdone.micromiles.co/personal#tasks/";
+  start.disabled = false;
 }
 
 function setLong() {
   clearTimeout(timerID);
-  timer = document.getElementById("timer").innerHTML = "15:00";
+  timer = document.getElementById("timer").innerHTML = localStorage.getItem("longbreak") + ":00";
+}
+
+function setDefaultParameters() {
+  
+  localStorage.setItem("pomodorobreak", "25");
+  localStorage.setItem("shortbreak", "10");
+  localStorage.setItem("longbreak", "15");
+  
+  
+  timer = localStorage.getItem("pomodorobreak") + ":00";
+  document.getElementById("timer").innerHTML = timer;
+  
+  document.getElementById("pomodoro-time").value = localStorage.getItem("pomodorobreak"); 
+  document.getElementById("short-time").value = localStorage.getItem("shortbreak");
+  document.getElementById("long-time").value = localStorage.getItem("longbreak");
+  
+  document.getElementById("pomodoro").value = localStorage.getItem("pomodorobreak"); 
+  document.getElementById("short-break").value = localStorage.getItem("shortbreak");
+  document.getElementById("long-break").value = localStorage.getItem("longbreak");
+}
+
+function setParameters() {
+  if (shortTime.value < 10) {
+    localStorage.setItem("shortbreak", "0" + shortTime.value);
+  } else {
+    localStorage.setItem("shortbreak", shortTime.value);
+  }
+  if (longTime.value < 10) {
+    localStorage.setItem("longbreak", "0" + longTime.value);  
+  } else {
+    localStorage.setItem("longbreak", longTime.value);
+  }
+  if (pomodoroTime.value < 10) {
+    localStorage.setItem("pomodorobreak", "0" + pomodoroTime.value);  
+  } else {
+    localStorage.setItem("pomodorobreak", pomodoroTime.value);
+  }
+  
+  timer = localStorage.getItem("pomodorobreak") + ":00";
+  document.getElementById("timer").innerHTML = timer;
+  
+  modalView();
+}
+
+
+function modalView() {
+  modalSettings.classList.toggle("modal-settings__view");
 }
