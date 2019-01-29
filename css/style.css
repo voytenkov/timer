@@ -120,7 +120,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  background-color: aqua;
+  background-color: #356356;
+  color: #ffffff;
 }
 
 .modal-settings__view {
