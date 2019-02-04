@@ -6,16 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Document</title>
   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
   <div class="container">
     <header class="row">
           <div class="col-sm-12 navbar navbar-expand-sm">
-            <div class="col-sm-5 navbar-nav">
+            <div class="col-sm-5 navbar-nav justify-content-center">
               <h2 class="nav-item">TomatoTimer</h2>
             </div>
-            <ul class="col-sm-7 navbar-nav">
+            <ul class="col-sm-7 navbar-nav justify-content-center">
               <li class="nav-item"><a class="nav-link" href="">FAQ</a></li>
               <li class="nav-item" id="settings"><a class="nav-link" href="#">Settings</a></li>
               <li class="nav-item"><a class="nav-link" href="">Tweet about us!</a></li>
@@ -24,19 +25,17 @@
     </header>
 
     <div class="row">
-      <div class="settings-wrapper">
-        <ul class="buttons-list">
-          <li class="buttons-item">
-            <button class="button active" id="pomodoro" type="submit" value="pomodoro">Pomodoro</button>
+      <ul class="col-sm-12 btn-group justify-content-center flex-wrap">
+          <li class="btn col-sm-4 ">
+            <button class="btn btn-block active" id="pomodoro" type="submit" value="pomodoro">Pomodoro</button>
           </li>
-          <li class="buttons-item">
-            <button class="button" id="short-break" type="submit" value="short-break">Short Break</button>
+          <li class="btn col-sm-4 ">
+            <button class="btn btn-block" id="short-break" type="submit" value="short-break">Short Break</button>
           </li>
-          <li class="buttons-item">
-            <button class="button" id="long-break" type="submit" value="long-break">Long Break</button>
+          <li class="btn col-sm-4">
+            <button class="btn btn-block" id="long-break" type="submit" value="long-break">Long Break</button>
           </li>
         </ul>
-      </div>
     </div>
 
     <div class="container">
@@ -45,20 +44,16 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="controls-wrapper">
-        <ul class="buttons-list">
-          <li class="buttons-item"><button class="button start" id="start" type="submit" value="Start">Start</button>
+    <div class="row">
+      <ul class="col-sm-12 btn-group justify-content-center flex-wrap">
+          <li class="btn col-sm-2"><button class="btn btn-block start" id="start" type="submit" value="Start">Start</button>
           </li>
-          <li class="buttons-item"><button  class="button stop" id="stop" type="submit" value="Stop">Stop</button></li>
-          <li class="buttons-item"><button  class="button reset" id="reset" type="submit" value="Reset">Reset</button></li>
+          <li class="btn col-sm-2"><button  class="btn btn-block stop" id="stop" type="submit" value="Stop">Stop</button></li>
+          <li class="btn col-sm-2"><button  class="btn btn-block reset" id="reset" type="submit" value="Reset">Reset</button></li>
         </ul>
-      </div>
     </div>
 
-<section class="modal-settings modal-settings__view {
-  display: none;
-}">
+<section class="modal-settings modal-settings__view">
   <h3 class="modal-settings__caption">Options</h3>
   
   <div class="modal-settings__values">
@@ -75,7 +70,7 @@
       <input id="long-time" type="number" step="1" min="1">
     </div>
   </div>
-  <input type="button" id="save" class="button" value="Save">
+  <input type="button" id="save" class="btn col-6 col-sm-6" value="Save">
 </section>
 
   </div>
