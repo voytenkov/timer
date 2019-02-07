@@ -10,68 +10,76 @@
 </head>
 
 <body>
-  <div class="container">
-    <header class="row">
-          <div class="col-sm-12 navbar navbar-expand-sm">
-            <div class="col-sm-5 navbar-nav justify-content-center">
-              <h2 class="nav-item">TomatoTimer</h2>
-            </div>
-            <ul class="col-sm-7 navbar-nav justify-content-center">
-              <li class="nav-item"><a class="nav-link" href="">FAQ</a></li>
-              <li class="nav-item" id="settings"><a class="nav-link" href="#">Settings</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Tweet about us!</a></li>
-            </ul>
-          </div>
-    </header>
+  <div class="header-wrapper">
+    <header class="container main-header">
 
-    <div class="row">
-      <ul class="col-sm-12 btn-group justify-content-center flex-wrap">
-          <li class="btn col-sm-4 ">
-            <button class="btn btn-block active" id="pomodoro" type="submit" value="pomodoro">Pomodoro</button>
-          </li>
-          <li class="btn col-sm-4 ">
-            <button class="btn btn-block" id="short-break" type="submit" value="short-break">Short Break</button>
-          </li>
-          <li class="btn col-sm-4">
-            <button class="btn btn-block" id="long-break" type="submit" value="long-break">Long Break</button>
-          </li>
+      <div class="col-sm-12 navbar navbar-expand-sm">
+        <div class="col-sm-5 navbar-nav justify-content-center">
+          <h2 class="nav-item">TomatoTimer</h2>
+        </div>
+        <ul class="col-sm-7 navbar-nav justify-content-center">
+          <li class="nav-item"><a class="nav-link" href="">FAQ</a></li>
+          <li class="nav-item" id="settings"><a class="nav-link" href="#">Settings</a></li>
+          <li class="nav-item"><a class="nav-link" href="">Tweet about us!</a></li>
         </ul>
-    </div>
-
-    <div class="container">
-      <div class="time-wrapper">
-        <p id="timer">25:00</p>
       </div>
-    </div>
 
-    <div class="row">
-      <ul class="col-sm-12 btn-group justify-content-center flex-wrap">
-          <li class="btn col-sm-2"><button class="btn btn-block start" id="start" type="submit" value="Start">Start</button>
-          </li>
-          <li class="btn col-sm-2"><button  class="btn btn-block stop" id="stop" type="submit" value="Stop">Stop</button></li>
-          <li class="btn col-sm-2"><button  class="btn btn-block reset" id="reset" type="submit" value="Reset">Reset</button></li>
-        </ul>
-    </div>
-
-<section class="modal-settings modal-settings__view">
-  <h3 class="modal-settings__caption">Options</h3>
-  
-  <div class="modal-settings__values">
-    <div class="modal-settings__value">
-      <label for="pomodoro-time">Pomodoro</label>
-      <input id="pomodoro-time" type="number" step="1" min="1">
-    </div>
-    <div class="modal-settings__value">
-      <label for="short-time">Short break</label>
-      <input id="short-time" type="number" step="1" min="1">
-    </div>
-    <div class="modal-settings__value">
-      <label for="long-time">Long break</label>
-      <input id="long-time" type="number" step="1" min="1">
-    </div>
+    </header>
   </div>
-  <input type="button" id="save" class="btn col-6 col-sm-6" value="Save">
-</section>
+  <div class="container">
+
+    <ul class="col-sm-9 btn-group settings-group">
+      <li class="col-sm-4 setting-item">
+        <button class="btn btn-block active" id="pomodoro" type="submit" value="pomodoro">Pomodoro</button>
+      </li>
+      <li class="col-sm-4 setting-item">
+        <button class="btn btn-block" id="short-break" type="submit" value="short-break">Short Break</button>
+      </li>
+      <li class="col-sm-4 setting-item">
+        <button class="btn btn-block" id="long-break" type="submit" value="long-break">Long Break</button>
+      </li>
+    </ul>
+
+
+
+    <div class="time-wrapper">
+      <p id="timer">25:00</p>
+    </div>
+
+
+
+    <ul class="col-sm-9 btn-group controls-group">
+      <li class="col-sm-3 controls-item">
+        <button class="btn btn-block start" id="start" type="submit" value="Start">Start</button>
+      </li>
+      <li class="col-sm-3 controls-item">
+        <button class="btn btn-block stop" id="stop" type="submit" value="Stop">Stop</button>
+      </li>
+      <li class="col-sm-3 controls-item">
+        <button class="btn btn-block reset" id="reset" type="submit" value="Reset">Reset</button>
+      </li>
+    </ul>
+
+
+    <section class="modal-settings modal-settings__view">
+      <h3 class="modal-settings__caption">Options</h3>
+
+      <div class="modal-settings__values">
+        <div class="modal-settings__value">
+          <label for="pomodoro-time">Pomodoro</label>
+          <input id="pomodoro-time" type="number" step="1" min="1">
+        </div>
+        <div class="modal-settings__value">
+          <label for="short-time">Short break</label>
+          <input id="short-time" type="number" step="1" min="1">
+        </div>
+        <div class="modal-settings__value">
+          <label for="long-time">Long break</label>
+          <input id="long-time" type="number" step="1" min="1">
+        </div>
+      </div>
+      <input type="button" id="save" class="btn col-6 col-sm-6" value="Save">
+    </section>
 
   </div>
   <script src="./js/script.js"></script>
