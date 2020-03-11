@@ -16,7 +16,7 @@ var longTime = document.querySelector("#long-time");
 var saveParameters = document.querySelector("#save");
 
 var timerID = null;
-var URL = "http://mnogosdelal.ru/donothingfor2minutes/";
+var URL = "http://www.donothingfor2minutes.com";
 start.addEventListener("click", countDown);
 pause.addEventListener("click", countDownReturn);
 reset.addEventListener("click", countDownReset);
